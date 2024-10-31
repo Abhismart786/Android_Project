@@ -2,4 +2,7 @@
     <string name="app_name">WhatsApp</string>
     <string name="settings">Settings</string>
     <string name="logout">Logout</string>
+    <string name="default_web_client_id">string</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
