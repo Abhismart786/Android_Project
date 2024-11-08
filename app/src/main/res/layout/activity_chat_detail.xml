@@ -13,18 +13,69 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme">
+        android:theme="?attr/actionBarTheme"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        tools:ignore="ExtraText">
+
+        <!-- Arrow Image -->
+
+        <!-- Profile Image -->
 
         <ImageView
             android:id="@+id/imageView2"
+            android:layout_width="36dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="-10dp"
+            android:layout_marginBottom="-10dp"
+            app:layout_constraintBottom_toTopOf="@+id/profile_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.043"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image"
+            app:layout_constraintVertical_bias="0.5"
+            app:srcCompat="@drawable/baseline_arrow_back_24"
+            tools:ignore="MissingConstraints" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="72dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="301dp"
+            android:layout_toEndOf="@id/imageView2"
+            android:padding="2dp"
+            android:src="@drawable/avtar"
+            android:textAlignment="textEnd"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/baseline_arrow_back_24" />
+            android:text="Abhishek"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/profile_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!-- TextView next to Profile Image -->
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.appcompat.widget.Toolbar>
 
 </RelativeLayout>
