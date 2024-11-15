@@ -20,9 +20,9 @@ import java.util.ArrayList;
 
 public class ChatsFragment extends Fragment {
 
-    public ChatsFragment() {
-        // Required empty public constructor
-    }
+//    public ChatsFragment() {
+//        // Required empty public constructor
+//    }
 
     FragmentChatsBinding binding;
     ArrayList<Users> list = new ArrayList<>();
@@ -53,12 +53,11 @@ public class ChatsFragment extends Fragment {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Users users = dataSnapshot.getValue(Users.class);
                     if (users != null) { // Check if users is not null
-                        users.getUserId(dataSnapshot.getKey()); // Set user ID correctly
+                        users.setUserId(dataSnapshot.getKey()); // Set user ID correctly
                         list.add(users);
                     }
+                    adaptor.notifyDataSetChanged();
                 }
-                adaptor.notifyDataSetChanged();
-
             }
 
             @Override
@@ -67,6 +66,9 @@ public class ChatsFragment extends Fragment {
             }
         });
 
-        return binding.getRoot(); // Return the root view of the binding
+        return binding.getRoot();
+
+        // Return the root view of the binding
     }
+
 }
