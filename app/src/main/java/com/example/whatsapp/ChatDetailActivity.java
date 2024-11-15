@@ -1,6 +1,8 @@
 package com.example.whatsapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,7 +34,7 @@ public class ChatDetailActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
 
-        
+
         String senderId = auth.getUid();
         String receiveId = getIntent().getStringExtra("userId");
         String userName = getIntent().getStringExtra("userName");
@@ -41,6 +43,14 @@ public class ChatDetailActivity extends AppCompatActivity {
 
         binding.userName.setText(userName);
         Picasso.get().load(profilePic).placeholder(R.drawable.avtar).into(binding.profileImage);
+
+        binding.backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChatDetailActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

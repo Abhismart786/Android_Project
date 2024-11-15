@@ -70,7 +70,7 @@
         <!-- Profile Image -->
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/backArrow"
             android:layout_width="36dp"
             android:layout_height="35dp"
             android:layout_alignParentStart="true"
@@ -94,7 +94,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="16dp"
             android:layout_marginEnd="310dp"
-            android:layout_toEndOf="@id/imageView2"
+            android:layout_toEndOf="@id/backArrow"
             android:padding="2dp"
             android:src="@drawable/avtar"
             android:textAlignment="textEnd"
@@ -103,7 +103,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/backArrow"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
 
