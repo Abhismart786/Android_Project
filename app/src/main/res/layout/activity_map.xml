@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <!-- Wrap the EditText and Button in a ScrollView to make it scrollable -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Please enter your address"
+                android:padding="20dp" />
+
+            <Button
+                android:id="@+id/getaddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Get the address" />
+            <Button
+                android:id="@+id/getback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="back" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- The MapView takes up the rest of the screen space -->
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 
@@ -40,6 +42,24 @@ public class MainActivity extends AppCompatActivity {
 
         binding.viewPager.setAdapter(new FragmentAdaptor(getSupportFragmentManager()));
         binding.tablayout.setupWithViewPager(binding.viewPager);
+
+        binding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MapActivity.class);
+                startActivity(intent);
+            }
+        });
+        Button goToMapButton = findViewById(R.id.button);
+        goToMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to MapActivity
+                Intent intent = new Intent(MainActivity.this, MapActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -60,7 +80,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this,signInActivity.class);
             startActivity(intent);
             return true;
-        } else {
+        }
+        else {
             return super.onOptionsItemSelected(item); // Handle other items as default
         }
     }
