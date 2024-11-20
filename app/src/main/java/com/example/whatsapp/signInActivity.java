@@ -6,16 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.whatsapp.databinding.ActivitySignInBinding;
-import com.google.android.gms.auth.api.identity.BeginSignInRequest;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,6 +19,7 @@ public class signInActivity extends AppCompatActivity {
     ActivitySignInBinding binding;
     ProgressDialog progressDialog;
     FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,55 +29,58 @@ public class signInActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(signInActivity.this);
         progressDialog.setTitle("Login");
-        progressDialog.setMessage("Login to your account");
-//        BeginSignInRequest signInRequest = BeginSignInRequest.builder()
-//                .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-//                        .setSupported(true)
-//                        // Your server's client ID, not your Android client ID.
-//                        .setServerClientId(getString(R.string.default_web_client_id))
-//                        // Only show accounts previously used to sign in.
-//                        .setFilterByAuthorizedAccounts(true)
-//                        .build())
-//                .build();
-//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestIdToken(getString(R.string.default_web_client_id))
-//                .requestEmail()
-//                .build();
+        progressDialog.setMessage("Logging in to your account");
 
-
+        // Sign-in Button Click Listener
         binding.btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                auth.signInWithEmailAndPassword(binding.etemail.getText().toString(),binding.etpassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                String email = binding.etemail.getText().toString();
+                String password = binding.etpassword.getText().toString();
+
+                // Validate if either email or password is empty
+                if (email.isEmpty() || password.isEmpty()) {
+                    // Show a toast message if any field is empty
+                    Toast.makeText(signInActivity.this, "Please fill in all details", Toast.LENGTH_SHORT).show();
+                    return; // Exit early if validation fails
+                }
+
+                // Show progress dialog while signing in
+                progressDialog.show();
+
+                // Attempt to sign in with email and password
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressDialog.dismiss();
-                        if(task.isSuccessful())
-                        {
-                            Intent intent = new Intent(signInActivity.this,MainActivity.class);
+                        if (task.isSuccessful()) {
+                            // If sign-in is successful, navigate to MainActivity
+                            Intent intent = new Intent(signInActivity.this, MainActivity.class);
                             startActivity(intent);
-                        }
-                        else
-                        {
-                            Toast.makeText(signInActivity.this,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            finish(); // Optionally, finish this activity to prevent back navigation
+                        } else {
+                            // If sign-in fails, show the error message
+                            Toast.makeText(signInActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
             }
         });
+
+        // Sign-up TextView Click Listener (to navigate to SignUpActivity)
         binding.tvClickSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(signInActivity.this, SignUpActivity.class);
                 startActivity(intent);
-
             }
         });
-        if(auth.getCurrentUser()!=null)
-        {
-            Intent intent = new Intent(signInActivity.this,MainActivity.class);
-            startActivity(intent);
-        }
 
+        // If user is already logged in, directly navigate to MainActivity
+        if (auth.getCurrentUser() != null) {
+            Intent intent = new Intent(signInActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish(); // Close sign-in activity
+        }
     }
 }
