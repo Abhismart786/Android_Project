@@ -68,6 +68,7 @@ public class SignUpActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()) {
+                                                        progressDialog.dismiss();
                                                         // Show success message and navigate to MainActivity
                                                         Toast.makeText(SignUpActivity.this, "User Created Successfully", Toast.LENGTH_SHORT).show();
                                                         Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
@@ -88,14 +89,14 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        // "Already have an account?" TextView Click Listener (to sign in)
-//        binding.tvalreadyAccount.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(SignUpActivity.this, signInActivity.class);
-//                startActivity(intent);
-//                finish(); // Optionally finish SignUpActivity to remove it from the back stack
-//            }
-//        });
+         //"Already have an account?" TextView Click Listener (to sign in)
+        binding.tvalreadyAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignUpActivity.this, signInActivity.class);
+                startActivity(intent);
+                finish(); // Optionally finish SignUpActivity to remove it from the back stack
+            }
+        });
     }
 }
