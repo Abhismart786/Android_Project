@@ -4,7 +4,7 @@ public class Users {
     String profilepic , userName ,mail,password,userId,lastMessage
 ;
 
-    public Users(String profilepic,String userName,String mail,String password,String userId,String lastMessage) {
+    public Users(String profilepic, String userName, String mail, String password, String userId, String lastMessage) {
         this.profilepic = profilepic;
         this.userName = userName;
         this.mail = mail;
@@ -16,7 +16,7 @@ public class Users {
     {
 
     }
-    public Users(String userName,String mail,String password) {
+    public Users(String userName, String mail, String password) {
 
         this.userName = userName;
         this.mail = mail;
