@@ -69,7 +69,15 @@
             android:text="SIGN IN"
             app:cornerRadius="4dp" />
 
-
+        <Button
+            android:id="@+id/btn_forgot_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="15dp"
+            android:text="Forgot Password?"
+            android:textColor="@android:color/holo_blue_dark"
+            android:background="@android:color/transparent" />
 
 
     </LinearLayout>

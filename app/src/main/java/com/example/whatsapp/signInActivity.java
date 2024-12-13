@@ -75,6 +75,14 @@ public class signInActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        binding.btnForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Navigate to ForgotPasswordActivity
+                Intent intent = new Intent(signInActivity.this, forgetpassword.class);
+                startActivity(intent);
+            }
+        });
 
         // If user is already logged in, directly navigate to MainActivity
         if (auth.getCurrentUser() != null) {
