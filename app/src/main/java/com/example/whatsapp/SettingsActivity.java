@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.whatsapp.Models.Users;
 import com.example.whatsapp.databinding.ActivitySettingsBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 public class SettingsActivity extends AppCompatActivity {
     ActivitySettingsBinding binding;
@@ -50,7 +52,11 @@ public class SettingsActivity extends AppCompatActivity {
                         .addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                                Users users = snapshot.getValue(Users.class);
+                                Picasso.get()
+                                        .load(users.getProfilepic())
+                                        .placeholder(R.drawable.avtar)
+                                        .into(binding.profileImage);
                             }
 
                             @Override
