@@ -72,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.settings) {
-            Toast.makeText(this, "Setting Clicked", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(i);
             return true;
         } else if (item.getItemId() == R.id.logout) {
             // Handle logout action
