@@ -25,6 +25,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+
 public class SettingsActivity extends AppCompatActivity {
     ActivitySettingsBinding binding;
     FirebaseStorage storage;
@@ -47,6 +49,17 @@ public class SettingsActivity extends AppCompatActivity {
         binding.backArrow.setOnClickListener(view -> {
             Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
             startActivity(intent);
+        });
+        binding.saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String status = binding.etStatus.getText().toString();
+                String username = binding.etUserName.getText().toString();
+
+                HashMap<String,Object> obj = new HashMap<>();
+                obj.put("userName",username);
+                obj.put("about",status);
+            }
         });
         database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
                         .addListenerForSingleValueEvent(new ValueEventListener() {
