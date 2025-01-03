@@ -38,5 +38,14 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        binding.Add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent,33);
+            }
+        });
     }
 }
