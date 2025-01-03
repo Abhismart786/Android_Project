@@ -5,8 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity"
-    android:background="@color/colorPrimary">
+    android:layout_marginLeft="5dp"
+    android:background="@color/colorPrimary"
+    tools:context=".SettingsActivity">
 
     <ImageView
         android:id="@+id/backArrow"
@@ -46,9 +47,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp">
+            android:orientation="horizontal">
 
             <TextView
 
@@ -66,6 +67,7 @@
                 android:inputType="text"
                 android:textColor="@color/white" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -87,9 +89,15 @@
                 android:inputType="text"
                 android:textColor="@color/white" />
         </LinearLayout>
+
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:padding="5dp"
+            android:paddingLeft="10dp"
+            android:text="Save">
 
         </androidx.appcompat.widget.AppCompatButton>
     </LinearLayout>
