@@ -11,9 +11,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.whatsapp.databinding.ActivitySettingsBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class SettingsActivity extends AppCompatActivity {
     ActivitySettingsBinding binding;
+    FirebaseStorage storage;
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
