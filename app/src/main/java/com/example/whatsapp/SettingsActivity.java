@@ -59,6 +59,8 @@ public class SettingsActivity extends AppCompatActivity {
                 HashMap<String,Object> obj = new HashMap<>();
                 obj.put("userName",username);
                 obj.put("about",status);
+                database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
+                        .updateChildren(obj);
             }
         });
         database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
