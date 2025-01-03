@@ -52,17 +52,17 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="UserName:"
+                android:text="User Name:"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/editTextText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Name" />
+                android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
