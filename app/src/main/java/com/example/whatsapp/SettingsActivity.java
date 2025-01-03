@@ -61,6 +61,7 @@ public class SettingsActivity extends AppCompatActivity {
                 obj.put("status",status);
                 database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
                         .updateChildren(obj);
+                Toast.makeText(SettingsActivity.this, "Profile Updated", Toast.LENGTH_SHORT).show();
             }
         });
         database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())

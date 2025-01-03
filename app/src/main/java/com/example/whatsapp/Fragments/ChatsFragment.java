@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.example.whatsapp.Adaptors.UsersAdaptor;
 import com.example.whatsapp.Models.Users;
 import com.example.whatsapp.databinding.FragmentChatsBinding;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -52,9 +53,14 @@ public class ChatsFragment extends Fragment {
                 list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Users users = dataSnapshot.getValue(Users.class);
-                    if (users != null) { // Check if users is not null
-                        users.setUserId(dataSnapshot.getKey()); // Set user ID correctly
-                        list.add(users);
+                    if (users != null) {
+                        // Set the userId correctly
+                        users.setUserId(dataSnapshot.getKey());
+
+                        // Only add the user if the userId is not equal to the current authenticated user's UID
+                        if (!users.getUserId().equals(FirebaseAuth.getInstance().getUid())) {
+                            list.add(users);
+                        }
                     }
                     adaptor.notifyDataSetChanged();
                 }
