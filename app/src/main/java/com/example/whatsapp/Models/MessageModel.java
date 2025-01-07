@@ -2,7 +2,7 @@ package com.example.whatsapp.Models;
 
 public class MessageModel {
 
-    String uId,message;
+    String uId,message,messageId;
     Long timestamp;
 
     public MessageModel(String uId, String message, Long timestamp) {
