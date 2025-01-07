@@ -11,6 +11,14 @@ public class MessageModel {
         this.timestamp = timestamp;
     }
 
+    public String getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(String messageId) {
+        this.messageId = messageId;
+    }
+
     public MessageModel(String uId, String message) {
         this.uId = uId;
         this.message = message;
